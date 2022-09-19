@@ -35,3 +35,60 @@ def string_bits(str):
         new_str+=str[i]
     return new_str
 
+def string_splosion(str):
+  new_str = ''
+  for i in range(len(str)):
+    if(len(str) == 1):
+      return str
+    if(i == 0):
+        new_str += str[i]*2
+    elif (i == 1):
+        new_str += str[i]
+    else:
+        new_str += str[0:i+1]
+  return new_str
+
+'''Given a string, return the count of the number of times that a substring length 2 appears in the string and also as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).'''
+def last2(str):
+    substring = str[len(str) - 2: len(str) ]
+    firststring = str[:len(str)-2]
+    count = 0
+    for i in range (len(firststring)):
+        new_substr = str[i: i+2]
+        if(new_substr == substring):
+            count += 1
+    return count
+
+'''Given an array of ints, return the number of 9's in the array.'''
+
+def array_count9(nums):
+  count9 = 0
+  for i in range(len(nums)):
+    if(nums[i] == 9):
+      count9 += 1
+  return count9
+
+'''Given an array of ints, return True if one of the first 4 elements in the array is a 9. The array length may be less than 4.'''
+
+def array_front9(nums):
+  bool = False
+  for i in range(len(nums[:4])):
+    if(nums[i] == 9):
+      bool = True
+  return bool
+
+'''Given an array of ints, return True if the sequence of numbers 1, 2, 3 appears in the array somewhere.
+'''
+
+def array123(nums):
+  bool = None
+  if(len(nums)<3):
+      return False
+  for i in range(len(nums)-1):
+    if(nums[i] == 1):
+        if(nums[i+1] == 2):
+            if(nums[i+2] == 3):
+                bool = True
+  if bool is None:
+      bool = False
+  return bool
