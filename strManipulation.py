@@ -92,3 +92,15 @@ def array123(nums):
   if bool is None:
       bool = False
   return bool
+
+def string_match(a, b):
+    matches = 0
+    for i in range(len(a) - 1):
+        substr_a = a[i] + a[i+1]
+        if i == len(b)-1:
+            break
+        else:
+            substr_b = b[i] + b[i+1]
+        if substr_a == substr_b:
+            matches += 1
+    return matches
