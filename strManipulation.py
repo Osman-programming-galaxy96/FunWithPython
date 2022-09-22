@@ -106,3 +106,23 @@ def string_match(a, b):
         if substr_a == substr_b:
             matches += 1
     return matches
+
+'''Given an array of ints length , return a new array with the elements in reverse order'''
+def reverse3(nums):
+  new_array=[]
+  for i in reversed(range(0, len(nums))):
+    new_array.append(nums[i])
+  return new_array
+
+'''Given an array of ints, figure out which is larger, the first or last element in the array, and set all the other elements to be that value. Return the changed array.
+
+'''
+def max_end3(nums):
+  new_array=[]
+  if(nums[0] >= nums[len(nums)-1]):
+    higher_number = nums[0]
+  else:
+    higher_number = nums[len(nums)-1]
+  for i in range(0,len(nums)):
+    new_array.append(higher_number)
+  return new_array
