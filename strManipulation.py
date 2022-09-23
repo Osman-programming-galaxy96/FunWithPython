@@ -126,3 +126,51 @@ def max_end3(nums):
   for i in range(0,len(nums)):
     new_array.append(higher_number)
   return new_array
+
+'''Given an array of ints, return the sum of the first 2 elements in the array. If the array length is less than 2, just sum up the elements that exist, returning 0 if the array is length 0.
+
+'''
+
+def sum2(nums):
+  count = 0
+  if (len(nums) == 1):
+    count += nums[0]
+  elif(len(nums)>1):
+    for i in range(2):
+      count += nums[i]
+  return count
+
+'''Given 2 int arrays, a and b, each length 3, return a new array length 2 containing their middle elements.
+
+'''
+def middle_way(a, b):
+  new_array = []
+  middle_point_a = len(a)/2
+  middle_point_b = len(b)/2
+  new_array.append(a[middle_point_a])
+  new_array.append(b[middle_point_b])
+  return new_array
+
+'''Given an array of ints, return a new array length 2 containing the first and last elements from the original array. The original array will be length 1 or more.
+
+'''
+
+def make_ends(nums):
+  new_array = []
+  if (len(nums) <=1):
+    new_array.append(nums[0])
+    new_array.append(nums[0])
+  else:
+    new_array.append(nums[0])
+    new_array.append(nums[len(nums)-1])
+  return new_array
+
+'''Given an int array length 2, return True if it contains a 2 or a 3.
+
+'''
+
+def has23(nums):
+  pos1 = nums[0]
+  pos2 = nums[1]
+  return pos1 == 2 or pos2==3 or pos1==3 or pos2==2
+
