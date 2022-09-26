@@ -52,9 +52,29 @@ def caught_speeding_ultra_v(speed, is_birthday):
 def testing_cought_speeding():
     a = 82
     b = False
-    print('test long solution', timeit.timeit(lambda : caught_speeding_long_v(a,b)))
-    print('test short solution', timeit.timeit(lambda : caught_speeding_short_v(a,b)))
-    print('test ultra solution', timeit.timeit(lambda : caught_speeding_ultra_v(a,b)))
+    print('test long solution\t\t', timeit.timeit(lambda : caught_speeding_long_v(a,b)))
+    print('test short solution\t\t', timeit.timeit(lambda : caught_speeding_short_v(a,b)))
+    print('test ultra solution\t\t', timeit.timeit(lambda : caught_speeding_ultra_v(a,b)))
 
-testing_cought_speeding()
+# testing_cought_speeding()
+
+'''Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a boolean indicating if we are on vacation, return a string of the form "7:00" indicating when the alarm clock should ring. Weekdays, the alarm should be "7:00" and on the weekend it should be "10:00". Unless we are on vacation -- then on weekdays it should be "10:00" and weekends it should be "off".
+
+'''
+def alarm_clock(day, vacation):
+  weekdays = "10:00" if vacation else "7:00"
+  weekends = "off" if vacation else "10:00"
+  if day >=1 and day <= 5:
+      return weekdays
+  else:
+      return weekends
+
+'''The number 6 is a truly great number. Given two int values, a and b, return True if either one is 6. Or if their sum or difference is 6. Note: the function abs(num) computes the absolute value of a number.
+
+'''
+def love6(a, b):
+  ret = False
+  if((a+b == 6 or abs(a-b) == 6) or (a==6 or b==6 )):
+    ret = True
+  return ret
 
