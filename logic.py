@@ -78,3 +78,74 @@ def love6(a, b):
     ret = True
   return ret
 
+'''Given a number n, return True if n is in the range 1..10, inclusive. Unless outside_mode is True, in which case return True if the number is less or equal to 1, or greater or equal to 10.
+
+'''
+def in1to10_hard_mode(n, outside_mode):
+  not_in_outside_mode = True if n in range (1,11) and not outside_mode else False
+  outside_mode_ON = True if n <=1 or n >=10 and outside_mode else False
+  if(outside_mode):
+    return outside_mode_ON
+  return not_in_outside_mode
+
+def in1to10(n, outside_mode):
+  if(outside_mode):
+    return (n <=1 or n>=10)
+  else:
+    return (n in range(1,11))
+
+'''
+We want to make a row of bricks that is goal inches long. We have a number of small bricks (1 inch each) and big bricks (5 inches each). Return True if it is possible to make the goal by choosing from the given bricks
+'''
+def make_bricks(small, big, goal):
+  leavings = goal - (big*5)
+  if(leavings <0):
+    leavings = goal%5
+  if(leavings == 0):
+    return True
+  if(leavings >0 ):
+    leavings = leavings-(small*1)
+  return leavings <= 0
+
+'''Given 3 int values, a b c, return their sum. However, if one of the values is the same as another of the values, it does not count towards the sum.
+
+'''
+def lone_sum(a, b, c):
+  sum = 0
+  if a!=b and a!=c:
+    sum += a
+  if b!=c and b!=a:
+    sum += b
+  if c!=a and c!=b:
+    sum += c
+  return sum
+
+'''Given 3 int values, a b c, return their sum. However, if one of the values is 13 then it does not count towards the sum and values to its right do not count. So for example, if b is 13, then both b and c do not count.
+
+'''
+def lucky_sum(a, b, c):
+  sum = 0
+  if a!=13:
+    sum += a
+  if b!=13 and a!=13:
+    sum +=b
+  if c!=13 and b!=13 and a!=13:
+    sum += c
+  return sum
+
+'''Given 3 int values, a b c, return their sum. However, if any of the values is a teen -- in the range 13..19 inclusive -- then that value counts as 0, except 15 and 16 do not count as a teens. Write a separate helper "def fix_teen(n):"that takes in an int value and returns that value fixed for the teen rule. In this way, you avoid repeating the teen code 3 times (i.e. "decomposition"). Define the helper below and at the same indent level as the main no_teen_sum().
+
+'''
+
+def no_teen_sum(a, b, c):
+  sum = 0
+  if not fix_teen(a):
+    sum += a
+  if not fix_teen(b):
+    sum += b
+  if not fix_teen(c):
+    sum += c
+  return sum
+
+def fix_teen(n):
+  return n >= 13 and n <=19 and n!= 15 and n!=16
