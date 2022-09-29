@@ -149,3 +149,38 @@ def no_teen_sum(a, b, c):
 
 def fix_teen(n):
   return n >= 13 and n <=19 and n!= 15 and n!=16
+
+def round_sum(a, b, c):
+  return round10(a) + round10(b) + round10(c)
+
+'''
+For this problem, we'll round an int value up to the next multiple of 10 if its rightmost digit is 5 or more, so 15 rounds up to 20. Alternately, round down to the previous multiple of 10 if its rightmost digit is less than 5, so 12 rounds down to 10. Given 3 ints, a b c, return the sum of their rounded values
+'''
+def round_sum(a, b, c):
+  return round10(a) + round10(b) + round10(c)
+def round10(num):
+  modulo = num%10
+  rounder = 10 - modulo
+  if modulo >=5:
+    return num + rounder
+  return num - modulo
+
+
+'''Given three ints, a b c, return True if one of b or c is "close" (differing from a by at most 1), while the other is "far", differing from both other values by 2 or more. Note: abs(num) computes the absolute value of a number.
+
+'''
+def close_far(a, b, c):
+    distance_ab = abs(a - abs(b))
+    distance_ac = abs(a - abs(c))
+
+    distance_ba = abs(b - abs(a))
+    distance_bc = abs(b - abs(c))
+
+    distance_ca = abs(c - abs(a))
+    distance_cb = abs(c - abs(b))
+
+    return (distance_ab <= 1 or distance_ac <= 1) and ((distance_ba >= 2 and distance_bc >= 2)
+    or (distance_ca >= 2 and distance_cb >= 2))
+
+
+
