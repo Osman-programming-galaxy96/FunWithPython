@@ -174,3 +174,46 @@ def has23(nums):
   pos2 = nums[1]
   return pos1 == 2 or pos2==3 or pos1==3 or pos2==2
 
+'''Given a string, return a string where for every char in the original, there are two chars.
+
+'''
+def double_char(str):
+  new_str = ""
+  for i in str:
+    new_str += 2*i
+  return new_str
+
+'''Return the number of times that the string "hi" appears anywhere in the given string.
+
+'''
+def count_hi(str):
+  hi_times = 0
+  for i in range(len(str) - 1):
+    if(str[i]+str[i+1] == 'hi'):
+      hi_times += 1
+  return hi_times
+
+
+'''Return True if the string "cat" and "dog" appear the same number of times in the given string.
+
+'''
+def cat_dog(str):
+  cat_sum = 0
+  dog_sum = 0
+  for i in range(len(str)):
+    if(str[i:i+3] == 'cat'):
+      cat_sum +=1
+    if(str[i:i+3] == 'dog'):
+      dog_sum +=1
+  return cat_sum == dog_sum
+
+'''Return the number of times that the string "code" appears anywhere in the given string, except we'll accept any letter for the 'd', so "cope" and "cooe" count.
+
+'''
+
+def count_code(str):
+  code_count = 0
+  for i in range(len(str)-3):
+    if(str[i:i+2] == 'co' and str[i+3] == 'e'):
+      code_count += 1
+  return code_count

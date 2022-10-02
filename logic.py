@@ -182,5 +182,12 @@ def close_far(a, b, c):
     return (distance_ab <= 1 or distance_ac <= 1) and ((distance_ba >= 2 and distance_bc >= 2)
     or (distance_ca >= 2 and distance_cb >= 2))
 
+'''We want make a package of goal kilos of chocolate. We have small bars (1 kilo each) and big bars (5 kilos each). Return the number of small bars to use, assuming we always use big bars before small bars. Return -1 if it can't be done.
 
+'''
+def make_chocolate(small, big, goal):
+  small_needed = goal - big*5
+  if(small_needed <0 or small_needed > small):
+    return -1
+  return small_needed
 
