@@ -217,3 +217,19 @@ def count_code(str):
     if(str[i:i+2] == 'co' and str[i+3] == 'e'):
       code_count += 1
   return code_count
+
+'''Given two strings, return True if either of the strings appears at the very end of the other string, ignoring upper/lower case differences'''
+def end_other(a, b):
+  a = a.lower()
+  b = b.lower()
+  return (b[len(b)- len(a): len(b)] == a) or (a[len(a)- len(b):len(a)] == b)
+
+
+'''Return True if the given string contains an appearance of "xyz" where the xyz is not directly preceeded by a period (.). So "xxyz" counts but "x.xyz" does not.
+
+'''
+def xyz_there(str):
+    for i in range(len(str)):
+        if (str[i:i+3] == 'xyz' and str[i-1] != '.'):
+            return True
+    return False
