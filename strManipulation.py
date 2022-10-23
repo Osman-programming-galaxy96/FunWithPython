@@ -1,6 +1,8 @@
 '''base functions to practice string operations'''
 '''Most of them are solution to CodingBat problems from https://codingbat.com/python'''
 
+def format_string():
+    print('Twinkle, twinkle, little star,\n\t How I wonder what you are! \n\t\tUp above the world so high, \t\n\t\tLike a diamond in the sky.\nTwinkle, twinkle, little star, \n\tHow I wonder what you are')
 # Given 2 int values, return True if one is negative and one is positive. Except if the parameter "negative" is True, then return True only if both are negative.
 def pos_neg(a, b, negative):
   if(negative):
@@ -233,3 +235,18 @@ def xyz_there(str):
         if (str[i:i+3] == 'xyz' and str[i-1] != '.'):
             return True
     return False
+
+'''Write a Python program which accepts the user's first and last name and print them in reverse order with a space between them.'''
+
+def spell_backwards_names():
+    name = input('Podaj swoje imię')
+    surname = input('Podaj swoje nazwisko')
+    fullname = spell_backwards(name)+ " "+spell_backwards(surname)
+    return fullname
+
+'''Write a Python program to accept a filename from the user and print the extension of that.'''
+
+def print_extension():
+    get_filename = input("Podaj nazwę pliku: ")
+    extension = get_filename.split(".")
+    return extension[-1]
