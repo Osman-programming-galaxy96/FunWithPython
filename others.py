@@ -28,3 +28,19 @@ def get_day_distance():
 
     dt = t1-t2
     print(dt)
+
+'''Int to roman values converter in range  1 <= num <= 3999'''
+
+class Solution(object):
+    def intToRoman(self,num):
+        M = ["", "M", "MM", "MMM"]
+        C = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+        X = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+        I = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+        thousands = M[num//1000]
+        houndreds = C[num%1000 // 100]
+        tens = X[num%1000 %100 // 10]
+        ones = I[num%1000 %100%10]
+
+        print("Roman equivalent ", thousands+houndreds+tens+ones)
+
