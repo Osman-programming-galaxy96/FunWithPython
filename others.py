@@ -30,6 +30,7 @@ def get_day_distance():
     print(dt)
 
 '''Int to roman values converter in range  1 <= num <= 3999'''
+'''Roman to Int converter'''
 
 class Solution(object):
     def intToRoman(self,num):
@@ -43,4 +44,45 @@ class Solution(object):
         ones = I[num%1000 %100%10]
 
         print("Roman equivalent ", thousands+houndreds+tens+ones)
+
+    def romanToInt(self,s):
+        intSwitcher = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+        }
+        substractor = ["IV", "IX", "XL", "XC", "CD", "CM"]
+        substractorIntSwitcher ={
+            "IV": 4,
+            "IX": 9,
+            "XL": 40,
+            "XC": 90,
+            "CD": 400,
+            "CM": 900,
+        }
+        substractonPrecedors = ["I", "X", "C"]
+        counter = 0
+        skip = False
+        for i in range(len(s)):
+            if s[i] in substractonPrecedors:
+                if i < len(s) -1:
+                    ab = s[i:i+2]
+                    if ab in substractor:
+                        val = substractorIntSwitcher[ab]
+                        counter += val
+                        skip = True
+                        continue
+                    elif not skip:
+                        counter += intSwitcher[s[i]]
+                elif not skip:
+                    counter += intSwitcher[s[i]]
+            elif not skip:
+                counter += intSwitcher[s[i]]
+            skip = False
+        return counter
+
 
