@@ -104,4 +104,18 @@ def findRestaurant(self, list1, list2):
             common_string.append(j)
     return common_string
 
+def runningSum(nums):
+    running_sum = []
+    for i in range(1,len(nums)+1):
+        running_sum.append(sum(nums[0:i]))
+    return running_sum
+
+'''Find Pivot Index'''
+def pivotIndex(nums):
+    for i in range(len(nums)):
+        sum_front = sum(nums[0:i])
+        sum_back = sum(nums[i+1:len(nums)])
+        if sum_front == sum_back:
+            return i
+    return -1
 
