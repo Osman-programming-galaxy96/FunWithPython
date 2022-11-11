@@ -30,8 +30,9 @@ def get_day_distance():
     print(dt)
 
 '''Int to roman values converter in range  1 <= num <= 3999'''
-
-class Solution(object):
+'''Roman to Int converter'''
+''
+class RomanOperation(object):
     def intToRoman(self,num):
         M = ["", "M", "MM", "MMM"]
         C = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
@@ -43,4 +44,78 @@ class Solution(object):
         ones = I[num%1000 %100%10]
 
         print("Roman equivalent ", thousands+houndreds+tens+ones)
+
+    def romanToInt(self,s):
+        intSwitcher = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+        }
+        substractor = ["IV", "IX", "XL", "XC", "CD", "CM"]
+        substractorIntSwitcher ={
+            "IV": 4,
+            "IX": 9,
+            "XL": 40,
+            "XC": 90,
+            "CD": 400,
+            "CM": 900,
+        }
+        substractonPrecedors = ["I", "X", "C"]
+        counter = 0
+        skip = False
+        for i in range(len(s)):
+            if s[i] in substractonPrecedors:
+                if i < len(s) -1:
+                    ab = s[i:i+2]
+                    if ab in substractor:
+                        val = substractorIntSwitcher[ab]
+                        counter += val
+                        skip = True
+                        continue
+                    elif not skip:
+                        counter += intSwitcher[s[i]]
+                elif not skip:
+                    counter += intSwitcher[s[i]]
+            elif not skip:
+                counter += intSwitcher[s[i]]
+            skip = False
+        return counter
+
+'''Minimum Index Sum of Two Lists'''
+def findRestaurant(self, list1, list2):
+    common_string = []
+    common_string_dict = {}
+    sum_indexes = []
+
+    for i in list1:
+        if i in list2:
+            common_pos1 = list1.index(i)
+            common_pos2 = list2.index(i)
+            sum = common_pos1 + common_pos2
+            sum_indexes.append(sum)
+            common_string_dict[i] = sum
+    min_index = min(sum_indexes)
+    for j in common_string_dict:
+        if common_string_dict[j] == min_index:
+            common_string.append(j)
+    return common_string
+
+def runningSum(nums):
+    running_sum = []
+    for i in range(1,len(nums)+1):
+        running_sum.append(sum(nums[0:i]))
+    return running_sum
+
+'''Find Pivot Index'''
+def pivotIndex(nums):
+    for i in range(len(nums)):
+        sum_front = sum(nums[0:i])
+        sum_back = sum(nums[i+1:len(nums)])
+        if sum_front == sum_back:
+            return i
+    return -1
 
