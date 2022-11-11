@@ -31,8 +31,8 @@ def get_day_distance():
 
 '''Int to roman values converter in range  1 <= num <= 3999'''
 '''Roman to Int converter'''
-
-class Solution(object):
+''
+class RomanOperation(object):
     def intToRoman(self,num):
         M = ["", "M", "MM", "MMM"]
         C = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
@@ -84,5 +84,24 @@ class Solution(object):
                 counter += intSwitcher[s[i]]
             skip = False
         return counter
+
+'''Minimum Index Sum of Two Lists'''
+def findRestaurant(self, list1, list2):
+    common_string = []
+    common_string_dict = {}
+    sum_indexes = []
+
+    for i in list1:
+        if i in list2:
+            common_pos1 = list1.index(i)
+            common_pos2 = list2.index(i)
+            sum = common_pos1 + common_pos2
+            sum_indexes.append(sum)
+            common_string_dict[i] = sum
+    min_index = min(sum_indexes)
+    for j in common_string_dict:
+        if common_string_dict[j] == min_index:
+            common_string.append(j)
+    return common_string
 
 
