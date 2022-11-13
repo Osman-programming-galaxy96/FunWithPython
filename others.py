@@ -118,4 +118,29 @@ def pivotIndex(nums):
         if sum_front == sum_back:
             return i
     return -1
+'''Isomorphic Strings'''
+'''Given two strings s and t, determine if they are isomorphic.
+'''
+class StringSolution():
+    def isIsomorphic(self,s, t):
+        letterMapping = {}
+        #Mapping every s[i] letter into t[i] letter
+        for i in range(len(s)):
+            if i <= len(t):
+                letterMapping[s[i]] = t[i]
+        #Find duplicates
+        resultMapping = StringSolution.findDuplicates(letterMapping)
+        new_word = ''
+        for i in range(len(s)):
+            if s[i] in resultMapping.keys():
+                new_word += letterMapping[s[i]]
+
+        return new_word == t
+    @staticmethod
+    def findDuplicates(dict):
+        resultMapping = {}
+        for key, value in dict.items():
+            if value not in resultMapping.values():
+                resultMapping[key] = value
+        return resultMapping
 
