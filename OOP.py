@@ -37,7 +37,80 @@ def bookAppender():
     for i in list:
         print(i.title)
 
-bookAppender()
+
+class Jednoslad:
+    def __init__(self, type, engCap, brand, mileage):
+        self.type = type
+        self.engCap = engCap
+        self.brand = brand
+        self.mileage = mileage
+    def go(self):
+        self.mileage += 1
+    def startEngine(self):
+        print(self.brand,"Uruchamia swój silnik", self.engCap, "bruuuum")
+    def giveMileage(self):
+        print("Mój przebieg to", self.mileage)
+
+class Skuter(Jednoslad):
+    pass
+
+class Motor(Jednoslad):
+    def __init__(self, engCap, maxSpeed):
+        super().__init__("motocykl", engCap, brand=None, mileage=None)
+        self.maxSpeed = maxSpeed
+
+    def winterIsComing(self):
+        print("Stoję całą zimę, bo nikt mną nie jeździ.")
+        print("Moja maksymalna prędkość to", self.maxSpeed)
+        print("A moja pojemność silnika to ", self.engCap)
 
 
+class samochód:
+
+    def __init__(self):
+
+        self.__silnik = False
+        self.__bieg = 0
+        self.__prędkość = 0
+
+    def uruchom(self):
+        self.__silnik = True
+
+    def wyłącz(self):
+        self.__silnik = False
+
+    def __biegNastępny(self):
+        if self.__bieg <= 6: self.__bieg += 1; print(self.__bieg)
+
+    def __biegPoprzedni(self):
+        if self.__bieg >= 0: self.__bieg -= 1; print(self.__bieg)
+
+    def przyspiesz(self):
+        if self.__silnik == True and self.__bieg > 0: self.__prędkość += 10; print(self.__prędkość)
+        self.__biegNastępny()
+
+    def hamuj(self):
+        if self.__prędkość >= 10:
+            self.__prędkość -= 10
+        else:
+            self.__prędkość = 0
+        self.__biegPoprzedni()
+class Automat(samochód):
+    def przyspiesz(self):
+        self.biegNastępny()
+        pass
+    def hamuj(self):
+        self.biegPoprzedni()
+        pass
+
+class Budynek():
+    def __init__(self):
+        self.__liczbaOsob = 0
+    def entryBuiling(self):
+        self.__liczbaOsob += 1
+    def exitBuilding(self):
+        if self.__liczbaOsob > 0 :
+            self.__liczbaOsob -= 1
+    def ifEmpty(self):
+        return self.__liczbaOsob <0
 
